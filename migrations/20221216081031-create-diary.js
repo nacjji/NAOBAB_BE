@@ -3,7 +3,9 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Diaries', {
+
       diaryId: {
+
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,

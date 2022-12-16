@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
+
   Diary.init(
     {
       diaryId: DataTypes.INTEGER,

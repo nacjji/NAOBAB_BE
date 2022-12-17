@@ -23,15 +23,15 @@ class DiarysRepository {
       order: [['diaryId', 'DESC']],
       include: [{ model: this.diaryModel, attributes: [] }],
       attributes: ['title', 'createdAt', 'updatedAt'],
-      group: 'postId',
+      group: 'diaryId',
     });
     return diaries;
   };
 
   //다이어리 상세 조회
-  findDetailDiary = async ({ postId }) => {
-    const post = await this.postsModel.findByPk(postId);
-    return post;
+  findDetailDiary = async ({ diaryId }) => {
+    const diary = await this.diaryModel.findByPk(diaryId);
+    return diary;
   };
 }
 

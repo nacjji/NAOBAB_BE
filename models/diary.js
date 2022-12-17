@@ -8,16 +8,17 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      this.belongsTo(models.Users, { foreignKey: 'userId' });
     }
   }
-
   Diary.init(
     {
       diaryId: DataTypes.INTEGER,
+      userId: { type: DataTypes.STRING, onDelete: 'CASECADE' },
       title: DataTypes.STRING,
       image: DataTypes.STRING,
       content: DataTypes.STRING,
+      weather: DataTypes.STRING,
     },
     {
       sequelize,

@@ -23,6 +23,7 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
+    "prettier": "^2.8.1",
     "sequelize": "^6.27.0",
     "sequelize-cli": "^6.5.2"
   },

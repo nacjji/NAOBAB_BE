@@ -1,4 +1,4 @@
-const { Users } = require("../../models")
+const { Users } = require('../../models');
 
 class SignupRepository {
   // 회원가입 메소드
@@ -6,15 +6,15 @@ class SignupRepository {
     const signupUserData = await Users.create({
       nickname,
       password,
-    })
-    return signupUserData
-  }
+    });
+    return signupUserData;
+  };
   findAllUser = async (nickname) => {
     const findAllUsers = await Users.findAll({
       where: { nickname },
-    })
-    return findAllUsers
-  }
+    });
+    return findAllUsers;
+  };
 }
 
-module.exports = SignupRepository
+module.exports = SignupRepository;

@@ -2,7 +2,7 @@ const { Users } = require('../../models');
 const jwt = require('jsonwebtoken');
 
 module.exports = async (req, res, next) => {
-  const authorization = req.cookies.token;
+  const authorization = req.header.token;
 
   if (!authorization) {
     res.status(401).send({

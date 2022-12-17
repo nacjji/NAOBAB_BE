@@ -19,19 +19,16 @@ class DiarysRepository {
 
   //다이어리 목록 전체 조회
   findAllDiaries = async () => {
-    const diaries = await this.diaryModel.findAll({
+    const diaries = await Diary.findAll({
       order: [['diaryId', 'DESC']],
-      include: [{ model: this.diaryModel, attributes: [] }],
-      attributes: ['title', 'createdAt', 'updatedAt'],
-      group: 'postId',
     });
     return diaries;
   };
 
   //다이어리 상세 조회
-  findDetailDiary = async ({ postId }) => {
-    const post = await this.postsModel.findByPk(postId);
-    return post;
+  findDetailDiary = async ({ diaryId }) => {
+    const diary = await Diary.findByPk(diaryId);
+    return diary;
   };
 }
 

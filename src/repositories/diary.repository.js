@@ -1,15 +1,16 @@
 const { Diary } = require('../../models');
-const { sequelize } = require("../../models");
+const { sequelize } = require('../../models');
 
 class DiarysRepository {
   constructor(diaryModel) {
-    this.dairyModel = dairyModel;
+    this.diaryModel = diaryModel;
   }
 
-    createDiary = async (title, images, content, weather) => {
+  createDiary = async (userId, title, image, content, weather) => {
     const createDiary = await Diary.create({
+      userId,
       title,
-      images,
+      image,
       content,
       weather,
     });
@@ -17,24 +18,21 @@ class DiarysRepository {
   };
 
   //다이어리 목록 전체 조회
-  findAllDairies = async () => {
-    const dairies = await this.dairyModel.findAllDairies({
-      order: [["dairyId", "DESC"]],
-      include: [{ model: this.dairyModel, attributes: [] }],
-      attributes: ["title", "createdAt", "updatedAt"],
-      group: "diaryId",
+  findAllDiaries = async () => {
+    const diaries = await this.diaryModel.findAll({
+      order: [['diaryId', 'DESC']],
+      include: [{ model: this.diaryModel, attributes: [] }],
+      attributes: ['title', 'createdAt', 'updatedAt'],
+      group: 'postId',
     });
-    return dairies;
+    return diaries;
   };
 
   //다이어리 상세 조회
-  findDetailDairy = async ({ diaryId }) => {
-    const diary = await this.dairyModel.findByPk(diaryId);
-    return diary;
+  findDetailDiary = async ({ postId }) => {
+    const post = await this.postsModel.findByPk(postId);
+    return post;
   };
-
- 
 }
 
-module.exports = DairysRepository;
-
+module.exports = DiarysRepository;

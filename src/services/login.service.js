@@ -21,7 +21,7 @@ class LoginService {
     // const expiresIn = new Date();
     // expiresIn.setMinutes(expiresIn.getMinutes() + 60); //제한시간 =  1시간 설정
 
-    const token = this.jwt.sign({ userId: user.username }, SECRET_KEY, {
+    const token = this.jwt.sign({ userId: user.userId }, SECRET_KEY, {
       expiresIn: '8h',
     }); //토큰 생성
 

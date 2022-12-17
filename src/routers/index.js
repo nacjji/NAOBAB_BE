@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const signupRouter = require('./signup.router');
 const diaryRouter = require('./diary.router');
-const authMiddleware = require('../middlewares/auth');
+
 // const diaryRouter = require("")
 
 const loginRouter = require('./login.router');

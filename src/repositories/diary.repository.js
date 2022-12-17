@@ -58,6 +58,8 @@ class DiarysRepository {
   //다이어리 상세 조회
   findDetailDiary = async ({ diaryId }) => {
     const diary = await Diary.findByPk(diaryId);
+    if (!diary) {
+    }
     return diary;
   };
 }

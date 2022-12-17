@@ -1,9 +1,19 @@
 const DiaryRepository = require('../../src/repositories/diary.repository');
 
-class DairyService {
-    constructor() {
-        this.diaryRepository = new DiaryRepository();
-    }
+
+class DiaryService {
+  constructor() {
+      this.diaryRepository = new DiaryRepository();
+  }
+  diaryRepository = new DiaryRepository();
+  createDiary = async (userId, title, image, content, weather) =>
+    await this.diaryRepository.createDiary(
+      userId,
+      title,
+      image,
+      content,
+      weather,
+    );
 
     //다이어리 목록 전체 조회
     findAllDiaries = async () => {
@@ -19,4 +29,4 @@ class DairyService {
 
 }
 
-module.exports = DairyService;
+module.exports = DiaryService;

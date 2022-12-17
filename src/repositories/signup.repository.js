@@ -1,11 +1,17 @@
 const { Users } = require('../../models');
 
 class SignupRepository {
-  signupUser = async (username, nickname, password, selfIntro, profileImg) => {
+  signupUser = async (
+    username,
+    nickname,
+    hashedPassword,
+    selfIntro,
+    profileImg,
+  ) => {
     const createUser = await Users.create({
       username,
       nickname,
-      password,
+      password: hashedPassword,
       selfIntro,
       profileImg,
     });

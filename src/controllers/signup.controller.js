@@ -16,4 +16,3 @@ class SignupController {
 }
 
 module.exports = SignupController;
-

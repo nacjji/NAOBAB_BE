@@ -16,6 +16,7 @@ class LoginController {
 
       const accessToken = await this.loginService.login(username, password); // 토큰 받아오기
       res.header('token', `Bearer ${accessToken}`);
+
       res.status(200).json({ message: '로그인에 성공했습니다.', accessToken });
     } catch (err) {
       next(err);

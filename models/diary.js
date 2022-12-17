@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Diary.init(
     {
-      diaryId: DataTypes.INTEGER,
+      diaryId: { type: DataTypes.INTEGER, primaryKey: true },
       userId: { type: DataTypes.STRING, onDelete: 'CASECADE' },
       title: DataTypes.STRING,
       image: DataTypes.STRING,

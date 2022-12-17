@@ -22,7 +22,7 @@ class LoginService {
     // expiresIn.setMinutes(expiresIn.getMinutes() + 60); //제한시간 =  1시간 설정
 
     const token = this.jwt.sign({ userId: user.userId }, SECRET_KEY, {
-      expiresIn: '10m',
+      expiresIn: '60m',
     }); //토큰 생성
 
     return token;

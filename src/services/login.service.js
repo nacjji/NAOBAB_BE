@@ -1,6 +1,6 @@
 const LoginRepository = require('../repositories/login.repository');
-const { Users } = require('../models');
-const { ApiError } = require('../utils/apiError');
+const { Users } = require('../../models');
+const { ApiError } = require('../utils/apiError.js');
 const { SECRET_KEY } = process.env;
 
 class UserService {
@@ -39,3 +39,5 @@ class UserService {
     }
   };
 }
+
+module.exports = LoginService;

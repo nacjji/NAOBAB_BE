@@ -11,7 +11,6 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.Users, { foreignKey: 'userId' });
     }
   }
-
   Diary.init(
     {
       diaryId: DataTypes.INTEGER,

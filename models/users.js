@@ -30,9 +30,11 @@ module.exports = (sequelize, DataTypes) => {
       },
       profileImg: {
         type: DataTypes.STRING,
+        allowNull: true,
       },
       selfIntro: {
         type: DataTypes.STRING,
+        allowNull: true,
       },
       createdAt: {
         allowNull: false,

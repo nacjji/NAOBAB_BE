@@ -3,7 +3,7 @@ class LoginRepository {
     this.loginModel = LoginModel;
   }
   getUserInfo = async (username) => {
-    const user = await this.usersModel.findOne({ where: { username } });
+    const user = await this.loginModel.findOne({ where: { username } });
     return user;
   };
 }

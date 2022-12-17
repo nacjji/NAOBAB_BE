@@ -6,7 +6,6 @@ const authMiddleware = require('../middlewares/auth');
 
 const loginRouter = require('./login.router');
 
-
 router.use('/signup/', signupRouter);
 router.use('/login', loginRouter);
 

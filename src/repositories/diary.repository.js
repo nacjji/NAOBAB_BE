@@ -1,5 +1,5 @@
 const { Diary } = require('../../models');
-const { sequelize } = require('../../models');
+const {NotFoundError} = require('../../exceptions/index.exception'); 
 
 class DiarysRepository {
   constructor(diaryModel) {
@@ -56,11 +56,12 @@ class DiarysRepository {
   };
 
   //다이어리 상세 조회
-  findDetailDiary = async ({ diaryId }) => {
-    const diary = await Diary.findByPk(diaryId);
-    if (!diary) {
-    }
-    return diary;
+  findDetailDiary = async ({ diaryId }) => {    
+      const diary = await Diary.findByPk(diaryId);
+      if (!diary) {
+        throw new NotFoundError ('일기장이 존재하지 않아요');
+      }
+      return diary;    
   };
 }
 

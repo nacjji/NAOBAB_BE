@@ -21,6 +21,7 @@ class LoginController {
       next(err);
     }
   };
+  kakaoLogin = async (req, res, next) => {};
 }
 
 module.exports = LoginController;

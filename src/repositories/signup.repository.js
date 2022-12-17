@@ -1,19 +1,20 @@
 const { Users } = require('../../models');
 
 class SignupRepository {
-  // 회원가입 메소드
-  signupUser = async (nickname, password) => {
-    const signupUserData = await Users.create({
+  signupUser = async (username, nickname, password, selfIntro, profileImg) => {
+    const createUser = await Users.create({
+      username,
       nickname,
       password,
+      selfIntro,
+      profileImg,
     });
-    return signupUserData;
+    return createUser;
   };
-  findAllUser = async (nickname) => {
-    const findAllUsers = await Users.findAll({
-      where: { nickname },
-    });
-    return findAllUsers;
+
+  isExistUser = async (username) => {
+    const findUser = await Users.findOne({ where: { username } });
+    return findUser;
   };
 }
 

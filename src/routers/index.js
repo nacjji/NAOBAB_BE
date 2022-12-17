@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const loginRouter = require('./login.route.js');
-const signup = require('./signup.route.js');
+const signupRouter = require('./signup.router');
+const authMiddleware = require("../middlewares/auth")
 
-router.use('/signup/', signup);
-router.use('/login', loginRouter);
+router.use('/signup/', signupRouter);
+router.use("/login", loginRouter);
+
+// router.use("/diary", diaryRouter);
 
 module.exports = router;
+

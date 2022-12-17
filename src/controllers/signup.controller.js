@@ -1,15 +1,19 @@
-const SignupRepository = require('../repositories/signup.repository');
+const SignupService = require('../../src/services/signup.service');
 
-class SignupService {
-  signupRepository = new SignupRepository();
-  signupUser = async (nickname, password) => {
-    // const existUser = await this.signupRepository.findAllUser(nickname)
-    // 닉네임에 특수문자가 있는 경우
-    // 닉네임의 길이가 6자리 미만인 경우
-    // 패스워드의 길이가 6자리 미만이거나 영문+숫자+특수문자가 아닌경우
-
-    await this.signupRepository.signupUser(nickname, password);
+class SignupController {
+  signupService = new SignupService();
+  signupUser = async (req, res, next) => {
+    const { username, nickname, password, selfIntro, profileImg } = req.body;
+    await this.signupService.signupUser(
+      username,
+      nickname,
+      password,
+      selfIntro,
+      profileImg,
+    );
+    return res.status(201).json({ message: '회원가입 참 잘했어요!' });
   };
 }
 
-module.exports = SignupService;
+module.exports = SignupController;
+

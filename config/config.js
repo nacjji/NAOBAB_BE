@@ -6,6 +6,7 @@ module.exports = {
     database: 'naobab_db',
     host: process.env.HOST,
     dialect: 'mysql',
+    timezone: '+09:00',
   },
   test: {
     username: process.env.DB_NAME,
@@ -13,6 +14,7 @@ module.exports = {
     database: 'naobab_test_db',
     host: process.env.HOST,
     dialect: 'mysql',
+    timezone: '+09:00',
   },
   production: {
     username: 'root',

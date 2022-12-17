@@ -13,12 +13,30 @@ module.exports = (sequelize, DataTypes) => {
   }
   Diary.init(
     {
-      diaryId: { type: DataTypes.INTEGER, primaryKey: true },
-      userId: { type: DataTypes.STRING, onDelete: 'CASECADE' },
-      title: DataTypes.STRING,
-      image: DataTypes.STRING,
-      content: DataTypes.STRING,
-      weather: DataTypes.STRING,
+      diaryId: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+      },
+      userId: {
+        type: DataTypes.STRING,
+        onDelete: 'CASECADE',
+      },
+      title: {
+        type: DataTypes.STRING,
+        defaultValue: '나는 오늘 밥을 먹어따',
+        allowNull: true,
+      },
+      image: {
+        type: DataTypes.STRING,
+      },
+      content: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue: '참 맛있었다.',
+      },
+      weather: {
+        type: DataTypes.STRING,
+      },
     },
     {
       sequelize,

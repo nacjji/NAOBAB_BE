@@ -42,10 +42,21 @@ class ValidationError extends Error {
     this.name = 'ValidationError';
   }
 }
+
+// 리소스 중복 오류
+class DuplicateError extends Error {
+  constructor(message, status) {
+    super(message);
+    this.status = status || 409;
+    this.name = 'DuplicateError';
+  }
+}
+
 module.exports = {
   AuthorizationError,
   BadRequestError,
   InvalidParamsError,
   NotFoundError,
   ValidationError,
+  DuplicateError,
 };

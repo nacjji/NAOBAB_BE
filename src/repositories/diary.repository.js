@@ -1,5 +1,4 @@
 const { Diary } = require('../../models');
-const { sequelize } = require('../../models');
 
 class DiarysRepository {
   constructor(diaryModel) {

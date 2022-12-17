@@ -11,6 +11,5 @@ router.use('/signup/', signupRouter);
 router.use("/login", loginRouter);
 
 // router.use("/diary", diaryRouter);
-// router.use("/login", loginRouter);
 
 module.exports = router;

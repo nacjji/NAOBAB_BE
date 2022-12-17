@@ -1,3 +1,4 @@
+const logger = require('../../config/loggers');
 const DiaryService = require('../../src/services/diary.service');
 
 class DiaryController {
@@ -26,12 +27,12 @@ class DiaryController {
 
   findDetailDiary = async (req, res) => {
     try {
-        const { diaryId } = req.params;
-        const diary = await this.diaryService.findDetailDiary({ diaryId });
-        return res.status(201).json({ diary });
-    }catch(error){
-        res.status(error.status).json({error:error.message});
-      }
+      const { diaryId } = req.params;
+      const diary = await this.diaryService.findDetailDiary({ diaryId });
+      return res.status(201).json({ diary });
+    } catch (error) {
+      res.status(error.status).json({ error: error.message });
+    }
   };
 }
 

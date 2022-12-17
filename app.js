@@ -5,6 +5,18 @@ const router = require('./src/routers/index');
 const app = express();
 const helmet = require('helmet');
 
+const logger = require('./config/loggers');
+
+app.get('/', (req, res) => {
+  logger.info('GET /');
+  res.sendStatus(200);
+});
+
+app.get('/error', (req, res) => {
+  logger.error('Error message');
+  res.sendStatus(500);
+});
+
 // XSS 공격 방어
 app.use(helmet());
 app.use(helmet.xssFilter());

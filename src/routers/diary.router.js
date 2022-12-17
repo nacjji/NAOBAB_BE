@@ -6,6 +6,7 @@ const diarycontroller = new DiaryController();
 
 router.post('/', authMiddleware, diarycontroller.createDiary);
 router.get('/:diaryId', authMiddleware, diarycontroller.findDetailDiary);
-router.get('/', diarycontroller.findAllDiaries)
+router.get('/', diarycontroller.findAllDiaries);
+
 
 module.exports = router;

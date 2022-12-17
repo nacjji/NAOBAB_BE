@@ -8,5 +8,4 @@ router.use('/signup/', signupRouter);
 router.use('/login', loginRouter);
 router.use('/diary', diaryRouter);
 
-
 module.exports = router;

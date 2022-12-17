@@ -1,4 +1,3 @@
-
 const DiaryService = require('../../src/services/diary.service');
 
 class DiaryController {
@@ -6,22 +5,19 @@ class DiaryController {
   createDiary = async (req, res) => {
     const { title, image, content, weather } = req.body;
     const { userId } = res.locals.user;
-    console.log(userId);
     await this.diaryService.createDiary(userId, title, image, content, weather);
     return res.status(201).json({ message: '일기장 생성' });
   };
 
- 
-  findAllDiaries = async (req, res) => {    
+  findAllDiaries = async (req, res) => {
     const diaries = await this.diaryService.findAllDiaries();
-    return res.status(201).json({ diaries });     
-  }; 
-
+    return res.status(201).json({ diaries });
+  };
 
   findDetailDiary = async (req, res) => {
     const { diaryId } = req.params;
     const diary = await this.diaryService.findDetailDiary({ diaryId });
-    return res.status(201).json({ diary });    
+    return res.status(201).json({ diary });
   };
 }
 

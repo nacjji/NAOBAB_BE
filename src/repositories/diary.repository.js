@@ -1,3 +1,4 @@
+const { Diary } = require('../../models');
 const { sequelize } = require("../../models");
 
 class DairysRepository {
@@ -5,7 +6,15 @@ class DairysRepository {
     this.dairyModel = dairyModel;
   }
 
-  
+    createDiary = async (title, images, content, weather) => {
+    const createDiary = await Diary.create({
+      title,
+      images,
+      content,
+      weather,
+    });
+    return createDiary;
+  };
 
   //다이어리 목록 전체 조회
   findAllDairies = async () => {
@@ -28,3 +37,4 @@ class DairysRepository {
 }
 
 module.exports = DairysRepository;
+

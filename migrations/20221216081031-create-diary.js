@@ -11,6 +11,10 @@ module.exports = {
       },
       userId: {
         type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'userId',
+        },
       },
       title: {
         type: Sequelize.STRING,
@@ -19,6 +23,9 @@ module.exports = {
         type: Sequelize.STRING,
       },
       content: {
+        type: Sequelize.STRING,
+      },
+      weather: {
         type: Sequelize.STRING,
       },
       createdAt: {

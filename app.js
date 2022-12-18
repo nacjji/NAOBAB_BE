@@ -6,6 +6,7 @@ const app = express();
 const helmet = require('helmet');
 
 const logger = require('./config/loggers');
+const cors = require('cors');
 
 app.get('/', (req, res) => {
   logger.info('GET /');
@@ -26,6 +27,13 @@ app.use(express.json());
 
 app.use('/api', express.urlencoded({ extended: false }));
 app.use('/api', router);
+
+app.use(
+  cors({
+    origin: true,
+    credentials: true,   // default: false
+  })
+);
 
 app.listen(port, () => {
   console.log(port, ' server is opened');

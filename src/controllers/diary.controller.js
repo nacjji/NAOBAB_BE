@@ -6,6 +6,7 @@ class DiaryController {
   diaryService = new DiaryService();
   createDiary = async (req, res) => {
     try {
+      const { userId } = res.locals.user;
       const { title, image, content, weather } = req.body;
       await this.diaryService.createDiary(
         userId,

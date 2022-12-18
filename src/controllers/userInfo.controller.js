@@ -19,13 +19,14 @@ class UserInfoController {
   };
 
   userInfo = async (req, res, next) => {
-    const { userId } = res.locals.user;
+    try {
+      const { userId } = res.locals.user;
 
-    const userInfo = await this.updateUserService.userInfo(userId);
-    res.status(200).json({ userInfo });
-    // } catch (error) {
-    //   res.status(error.status).json({ error: error.message });
-    // }
+      const userInfo = await this.updateUserService.userInfo(userId);
+      res.status(200).json({ userInfo });
+    } catch (error) {
+      res.status(error.status).json({ error: error.message });
+    }
   };
 }
 module.exports = UserInfoController;

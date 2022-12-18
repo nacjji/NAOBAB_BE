@@ -67,14 +67,14 @@ class DiarysRepository {
 
   //다이어리 업데이트
   updateDiary = async (diaryId, title, image, content, weather) => {
-    return await this.diaryModel.update(
+    return await Diary.update(
       { title, image, content, weather },
       { where: { diaryId } },
     );
   };
   //다이어리 삭제
   deleteDiary = async (diaryId) => {
-    await this.diaryModel.destroy({ where: { diaryId } });
+    await Diary.destroy({ where: { diaryId } });
   };
 }
 

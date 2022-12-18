@@ -1,10 +1,7 @@
 const { Users } = require('../../models');
-
+const { ValidationError } = require('../../exceptions/index.exception');
 class UserInfoRepository {
   updateUser = async (userId, nickname, profileImg, selfIntro) => {
-    if (userId !== loggedUser) {
-      throw new Error('본인만 수정 가능');
-    }
     const updateUser = await Users.update(
       { nickname, profileImg, selfIntro },
       { where: { userId } },

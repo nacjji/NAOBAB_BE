@@ -28,8 +28,10 @@ class DiaryService {
   };
 
   //다이어리 업데이트
-  updateDiary = async (diaryId, title, image, content, weather) => {
+  updateDiary = async (userId, diaryId, title, image, content, weather) => {
+    console.log(userId);
     return await this.diaryRepository.updateDiary(
+      userId,
       diaryId,
       title,
       image,
@@ -39,8 +41,8 @@ class DiaryService {
   };
 
   //다이어리 삭제
-  deleteDiary = async (diaryId) => {
-    return await this.diaryRepository.deleteDiary(diaryId);
+  deleteDiary = async (userId, diaryId) => {
+    return await this.diaryRepository.deleteDiary(userId, diaryId);
   };
 }
 

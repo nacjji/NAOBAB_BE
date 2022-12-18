@@ -22,15 +22,13 @@ class DiaryService {
   };
 
   //다이어리 상세 조회
-  findDetailDiary = async (diaryId) => {
-    const diary = await this.diaryRepository.findDetailDiary(diaryId);
+  findDetailDiary = async ({ diaryId }) => {
+    const diary = await this.diaryRepository.findDetailDiary({ diaryId });
     return diary;
   };
 
   //다이어리 업데이트
   updateDiary = async (diaryId, title, image, content, weather) => {
-    const diaryInfo = await this.diaryRepository.findDetailDiary(diaryId);
-
     return await this.diaryRepository.updateDiary(
       diaryId,
       title,

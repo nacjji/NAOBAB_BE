@@ -74,7 +74,7 @@ class DiarysRepository {
   };
   //다이어리 삭제
   deleteDiary = async (diaryId) => {
-    await diaryModel.destroy({ where: { diaryId } });
+    await this.diaryModel.destroy({ where: { diaryId } });
   };
 }
 

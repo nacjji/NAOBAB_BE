@@ -28,7 +28,7 @@ class DiaryController {
   findDetailDiary = async (req, res) => {
     try {
       const { diaryId } = req.params;
-      const diary = await this.diaryService.findDetailDiary(diaryId);
+      const diary = await this.diaryService.findDetailDiary({ diaryId });
       return res.status(201).json({ diary });
     } catch (error) {
       res.status(error.status).json({ error: error.message });
@@ -41,7 +41,8 @@ class DiaryController {
       const { diaryId } = res.params;
       const { userId } = res.locals.user;
 
-      const diaryInfo = await this.diaryService.findAllDiaries(diaryId);
+      const diaryInfo = await this.diaryService.findAllDiaries({ diaryId });
+
       if (userId !== diaryInfo.userId) {
         throw new ApiError('본인의 다이어리가 아닙니다.', 400);
       }
@@ -71,6 +72,7 @@ class DiaryController {
       const { diaryId } = res.params;
       const { userId } = res.locals.user;
       const diaryInfo = await this.diaryService.findAllDiaries(diaryId);
+
       if (userId !== diaryInfo.userId) {
         throw new ApiError('본인의 다이어리가 아닙니다.', 400);
       }
@@ -78,7 +80,7 @@ class DiaryController {
         throw new ApiError('없는 다이어리입니다.', 400);
       }
 
-      await this.diaryService.deleteDiary(userId, diaryId);
+      await this.diaryService.deleteDiary(diaryId);
       return res.status(201).json({ message: '일기장 삭제' });
     } catch (error) {
       res.status(error.status).json({ error: error.message });

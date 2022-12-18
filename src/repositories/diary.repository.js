@@ -1,6 +1,9 @@
 const { Diary } = require('../../models');
 
-const { NotFoundError } = require('../../exceptions/index.exception');
+const {
+  NotFoundError,
+  ValidationError,
+} = require('../../exceptions/index.exception');
 
 class DiarysRepository {
   constructor(DiaryModel) {
@@ -62,19 +65,35 @@ class DiarysRepository {
     if (!diary) {
       throw new NotFoundError('일기장이 존재하지 않아요');
     }
+
     return diary;
   };
 
   //다이어리 업데이트
-  updateDiary = async (diaryId, title, image, content, weather) => {
-    return await Diary.update(
+
+  updateDiary = async (userId, diaryId, title, image, content, weather) => {
+    const diaryInfo = await Diary.findOne({ where: { diaryId } });
+
+    if (!diaryInfo) {
+      throw new NotFoundError('없는 글입니다.');
+    }
+    if (userId !== diaryInfo.userId) {
+      throw new ValidationError('해당 글의 작성자가 아닙니다.');
+    }
+    return await this.diaryModel.update(
       { title, image, content, weather },
       { where: { diaryId } },
     );
   };
   //다이어리 삭제
-  deleteDiary = async (diaryId) => {
-    await Diary.destroy({ where: { diaryId } });
+
+  deleteDiary = async (userId, diaryId) => {
+    const diaryInfo = await Diary.findOne({ where: { diaryId } });
+
+    if (userId !== diaryInfo.userId) {
+      throw new ValidationError('해당 글의 작성자가 아닙니다.');
+    }
+    await this.diaryModel.destroy({ where: { diaryId } });
   };
 }
 

@@ -3,8 +3,8 @@ const { Diary } = require('../../models');
 const { NotFoundError } = require('../../exceptions/index.exception');
 
 class DiarysRepository {
-  constructor(diaryModel) {
-    this.diaryModel = diaryModel;
+  constructor(DiaryModel) {
+    this.diaryModel = DiaryModel;
   }
 
   createDiary = async (userId, title, image, content, weather) => {
@@ -63,6 +63,18 @@ class DiarysRepository {
       throw new NotFoundError('일기장이 존재하지 않아요');
     }
     return diary;
+  };
+
+  //다이어리 업데이트
+  updateDiary = async (diaryId, title, image, content, weather) => {
+    return await this.diaryModel.update(
+      { title, image, content, weather },
+      { where: { diaryId } },
+    );
+  };
+  //다이어리 삭제
+  deleteDiary = async (diaryId) => {
+    await this.diaryModel.destroy({ where: { diaryId } });
   };
 }
 

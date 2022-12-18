@@ -1,7 +1,5 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Diary extends Model {
     /**
@@ -10,17 +8,40 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      this.belongsTo(models.Users, { foreignKey: 'userId' });
     }
   }
-  Diary.init({
-    userId: DataTypes.INTEGER,
-    title: DataTypes.STRING,
-    image: DataTypes.STRING,
-    content: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Diary',
-  });
+  Diary.init(
+    {
+      diaryId: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+      },
+      userId: {
+        type: DataTypes.STRING,
+        onDelete: 'CASECADE',
+      },
+      title: {
+        type: DataTypes.STRING,
+        defaultValue: '나는 오늘 밥을 먹어따',
+        allowNull: true,
+      },
+      image: {
+        type: DataTypes.STRING,
+      },
+      content: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue: '참 맛있었다.',
+      },
+      weather: {
+        type: DataTypes.STRING,
+      },
+    },
+    {
+      sequelize,
+      modelName: 'Diary',
+    },
+  );
   return Diary;
 };

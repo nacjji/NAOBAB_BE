@@ -70,6 +70,7 @@ class DiarysRepository {
   };
 
   //다이어리 업데이트
+
   updateDiary = async (userId, diaryId, title, image, content, weather) => {
     const diaryInfo = await Diary.findOne({ where: { diaryId } });
 
@@ -85,6 +86,7 @@ class DiarysRepository {
     );
   };
   //다이어리 삭제
+
   deleteDiary = async (userId, diaryId) => {
     const diaryInfo = await Diary.findOne({ where: { diaryId } });
 

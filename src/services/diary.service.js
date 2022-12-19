@@ -16,8 +16,8 @@ class DiaryService {
     );
 
   //다이어리 목록 전체 조회
-  findAllDiaries = async () => {
-    const dairies = await this.diaryRepository.findAllDiaries();
+  findAllDiaries = async (userId) => {
+    const dairies = await this.diaryRepository.findAllDiaries(userId);
     return dairies;
   };
 

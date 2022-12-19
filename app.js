@@ -32,7 +32,7 @@ app.use('/api', router);
 
 app.use(
   cors({
-    origin: true,
+    origin: 'http://naobab-fe.vercel.app',
     credentials: true, // default: false
   }),
 );

@@ -60,10 +60,13 @@ class DiarysRepository {
   };
 
   //다이어리 상세 조회
-  findDetailDiary = async ({ diaryId }) => {
+  findDetailDiary = async ({ diaryId, userId }) => {
     const diary = await Diary.findByPk(diaryId);
-    if (!diary) {
+    if (!diary ) {
       throw new NotFoundError('일기장이 존재하지 않아요');
+    }
+    if (diary.userId !== userId) {
+      throw new ValidationError('해당 글의 작성자가 아닙니다.');
     }
 
     return diary;

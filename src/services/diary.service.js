@@ -22,8 +22,8 @@ class DiaryService {
   };
 
   //다이어리 상세 조회
-  findDetailDiary = async ({ diaryId }) => {
-    const diary = await this.diaryRepository.findDetailDiary({ diaryId });
+  findDetailDiary = async ({ diaryId, userId }) => {
+    const diary = await this.diaryRepository.findDetailDiary({ diaryId, userId });
     return diary;
   };
 

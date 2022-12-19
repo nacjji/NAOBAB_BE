@@ -29,7 +29,8 @@ class DiaryController {
   findDetailDiary = async (req, res) => {
     try {
       const { diaryId } = req.params;
-      const diary = await this.diaryService.findDetailDiary({ diaryId });
+      const { userId } = res.locals.user;
+      const diary = await this.diaryService.findDetailDiary({ diaryId, userId });
       return res.status(201).json({ diary });
     } catch (error) {
       res.status(error.status).json({ error: error.message });

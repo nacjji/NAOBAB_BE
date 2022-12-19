@@ -22,7 +22,9 @@ class DiaryController {
   };
 
   findAllDiaries = async (req, res) => {
-    const diaries = await this.diaryService.findAllDiaries();
+    const { userId } = res.locals.user;
+    console.log(userId)
+    const diaries = await this.diaryService.findAllDiaries(userId);
     return res.status(201).json({ diaries });
   };
 

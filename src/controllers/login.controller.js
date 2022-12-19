@@ -2,7 +2,7 @@ const LoginService = require('../services/login.service.js');
 const bcrypt = require('bcryptjs');
 const { loginRequestSchema } = require('../utils/auth.validation');
 const jwt = require('jsonwebtoken');
-
+const logger = require('../../config/loggers');
 class LoginController {
   constructor() {
     this.loginService = new LoginService(bcrypt, jwt);
@@ -19,6 +19,7 @@ class LoginController {
 
       res.status(200).json({ message: '로그인에 성공했습니다.', accessToken });
     } catch (err) {
+      logger.error(err.message);
       next(err);
     }
   };

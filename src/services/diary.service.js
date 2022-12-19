@@ -17,13 +17,16 @@ class DiaryService {
 
   //다이어리 목록 전체 조회
   findAllDiaries = async (userId) => {
-    const dairies = await this.diaryRepository.findAllDiaries(userId);
-    return dairies;
+    const diaries = await this.diaryRepository.findAllDiaries(userId);
+    return diaries;
   };
 
   //다이어리 상세 조회
   findDetailDiary = async ({ diaryId, userId }) => {
-    const diary = await this.diaryRepository.findDetailDiary({ diaryId, userId });
+    const diary = await this.diaryRepository.findDetailDiary({
+      diaryId,
+      userId,
+    });
     return diary;
   };
 

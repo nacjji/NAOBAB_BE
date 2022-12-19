@@ -1,4 +1,5 @@
 const UserInfoService = require('../services/userInfo.service');
+const logger = require('../../config/loggers');
 
 class UserInfoController {
   updateUserService = new UserInfoService();
@@ -25,6 +26,7 @@ class UserInfoController {
       const userInfo = await this.updateUserService.userInfo(userId);
       res.status(200).json({ userInfo });
     } catch (error) {
+      logger.error(error.message);
       res.status(error.status).json({ error: error.message });
     }
   };

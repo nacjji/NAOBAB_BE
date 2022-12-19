@@ -8,7 +8,7 @@ const {
 
 class SignupService {
   signupRepository = new SignupRepository();
-  signupUser = async (username, nickname, password, selfIntro, profileImg) => {
+  signupUser = async (username, nickname, password, selfIntro) => {
     const hashedPassword = await bcrypt.hash(password, parseInt(PASSWORD_SALT));
 
     const isExistUser = await this.signupRepository.isExistUser(username);
@@ -21,7 +21,6 @@ class SignupService {
       nickname,
       hashedPassword,
       selfIntro,
-      profileImg,
     );
     return true;
   };

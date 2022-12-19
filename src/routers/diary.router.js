@@ -7,7 +7,7 @@ const diarycontroller = new DiaryController();
 
 router.post('/', authMiddleware, diarycontroller.createDiary);
 router.get('/:diaryId', authMiddleware, diarycontroller.findDetailDiary);
-router.get('/', diarycontroller.findAllDiaries);
+router.get('/', authMiddleware, diarycontroller.findAllDiaries);
 router.put('/:diaryId', authMiddleware, diarycontroller.updateDiary);
 router.delete('/:diaryId', authMiddleware, diarycontroller.deleteDiary);
 module.exports = router;

@@ -51,9 +51,10 @@ class DiarysRepository {
     return createDiary;
   };
 
-  //다이어리 목록 전체 조회
-  findAllDiaries = async () => {
+  //다이어리 목록 전체 조회 -> where절 추가(userId)
+  findAllDiaries = async (userId) => {
     const diaries = await Diary.findAll({
+      where: {userId},
       order: [['diaryId', 'DESC']],
     });
     return diaries;

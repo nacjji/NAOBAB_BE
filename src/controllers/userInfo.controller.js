@@ -21,8 +21,12 @@ class UserInfoController {
   userInfo = async (req, res, next) => {
     try {
       const { userId } = res.locals.user;
+      const { profileImg } = req.body;
 
-      const userInfo = await this.updateUserService.userInfo(userId);
+      const userInfo = await this.updateUserService.userInfo(
+        userId,
+        profileImg,
+      );
       res.status(200).json({ userInfo });
     } catch (error) {
       res.status(error.status).json({ error: error.message });

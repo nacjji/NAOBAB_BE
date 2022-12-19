@@ -22,6 +22,8 @@ app.get('/error', (req, res) => {
 app.use(helmet());
 app.use(helmet.xssFilter());
 
+//CSRF
+
 const port = process.env.PORT;
 app.use(express.json());
 
@@ -31,8 +33,8 @@ app.use('/api', router);
 app.use(
   cors({
     origin: true,
-    credentials: true,   // default: false
-  })
+    credentials: true, // default: false
+  }),
 );
 
 app.listen(port, () => {

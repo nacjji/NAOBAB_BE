@@ -8,12 +8,12 @@ class UserInfoController {
       const { nickname, selfIntro } = req.body;
       const { userId } = res.locals.user;
       if (req.file) {
-        const profileImg = req.file.location;
+        const fileName = req.file.location;
         await this.updateUserService.updateUser(
           userId,
           nickname,
-          profileImg,
           selfIntro,
+          fileName,
         );
       }
       await this.updateUserService.updateUser(userId, nickname, selfIntro);

@@ -30,14 +30,13 @@ class DiaryController {
   findAllDiaries = async (req, res) => {
     try {
       const { userId } = res.locals.user;
-    console.log(userId);
-    const diaries = await this.diaryService.findAllDiaries(userId);
-    return res.status(200).json({ diaries });
-    }catch (error) {
+      const diaries = await this.diaryService.findAllDiaries(userId);
+      return res.status(200).json({ diaries });
+    } catch (error) {
       logger.error(error.message);
 
       res.status(error.status).json({ error: error.message });
-    }    
+    }
   };
 
   findDetailDiary = async (req, res) => {

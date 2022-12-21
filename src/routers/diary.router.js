@@ -5,13 +5,15 @@ const DiaryController = require('../controllers/diary.controller');
 const diarycontroller = new DiaryController();
 const multer = require('multer');
 
+const path = require('path');
+
 const upload = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, 'diaryImages/');
     },
     filename: function (req, file, cb) {
-      cb(null, file.originalname);
+      cb(null, new Date().valueOf() + path.extname(file.originalname + '.png'));
     },
   }),
 });

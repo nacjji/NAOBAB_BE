@@ -11,7 +11,6 @@ router.put(
   upload.single('image'),
   updateUserController.updateUser,
 );
-router.put('/', authMiddleware, updateUserController.updateUser);
 router.get('/', authMiddleware, updateUserController.userInfo);
 
 module.exports = router;

@@ -7,14 +7,16 @@ class UserInfoController {
     try {
       const { nickname, selfIntro } = req.body;
       const { userId } = res.locals.user;
-      console.log(req);
-      const profileImg = req.file.location;
-      await this.updateUserService.updateUser(
-        userId,
-        nickname,
-        profileImg,
-        selfIntro,
-      );
+      if (req.file) {
+        const profileImg = req.file.location;
+        await this.updateUserService.updateUser(
+          userId,
+          nickname,
+          profileImg,
+          selfIntro,
+        );
+      }
+      await this.updateUserService.updateUser(userId, nickname, selfIntro);
       return res.status(201).json({ message: '회원 수정 참 잘했어요!' });
     } catch (error) {
       console.log(error);

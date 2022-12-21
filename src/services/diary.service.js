@@ -6,11 +6,11 @@ class DiaryService {
     this.diaryRepository = new DiaryRepository(Diary);
   }
   diaryRepository = new DiaryRepository();
-  createDiary = async (userId, title, image, content, weather) =>
+  createDiary = async (userId, title, fileName, content, weather) =>
     await this.diaryRepository.createDiary(
       userId,
       title,
-      image,
+      fileName,
       content,
       weather,
     );

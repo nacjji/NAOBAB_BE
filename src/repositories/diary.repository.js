@@ -10,7 +10,7 @@ class DiarysRepository {
     this.diaryModel = DiaryModel;
   }
 
-  createDiary = async (userId, title, image, content, weather) => {
+  createDiary = async (userId, title, fileName, content, weather) => {
     // TODO: 프론트에서 날씨 정보 받아오면 이렇게 저장할 거야
     // const [temp, loca, weath] = req;
     // weather: { temp, loca, weath },
@@ -19,7 +19,7 @@ class DiarysRepository {
     if (!title) {
       const createDiary = await Diary.create({
         userId,
-        image,
+        image: fileName,
         content,
         weather,
       });
@@ -28,14 +28,14 @@ class DiarysRepository {
       const createDiary = await Diary.create({
         userId,
         title,
-        image,
+        image: fileName,
         weather,
       });
       return createDiary;
     } else if (!content && !title) {
       const createDiary = await Diary.create({
         userId,
-        image,
+        image: fileName,
         weather,
       });
       return createDiary;
@@ -44,9 +44,10 @@ class DiarysRepository {
     const createDiary = await Diary.create({
       userId,
       title,
-      image,
+      image: fileName,
       content,
       weather,
+      createdAt: new Date(),
     });
     return createDiary;
   };
@@ -54,7 +55,7 @@ class DiarysRepository {
   //다이어리 목록 전체 조회 -> where절 추가(userId)
   findAllDiaries = async (userId) => {
     const diaries = await Diary.findAll({
-      where: {userId},
+      where: { userId },
       order: [['diaryId', 'DESC']],
     });
     return diaries;

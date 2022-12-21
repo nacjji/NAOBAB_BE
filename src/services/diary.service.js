@@ -32,7 +32,6 @@ class DiaryService {
 
   //다이어리 업데이트
   updateDiary = async (userId, diaryId, title, image, content, weather) => {
-    console.log(userId);
     return await this.diaryRepository.updateDiary(
       userId,
       diaryId,

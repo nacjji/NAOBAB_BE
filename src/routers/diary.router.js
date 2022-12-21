@@ -3,11 +3,12 @@ const router = express.Router();
 const authMiddleware = require('../middlewares/auth');
 const DiaryController = require('../controllers/diary.controller');
 const diarycontroller = new DiaryController();
-const upload = require('upload');
+const upload = require('../middlewares/awsS3DiaryMiddleware');
+
 router.post(
   '/',
-  upload.single('image'),
   authMiddleware,
+  upload.single('image'),
   diarycontroller.createDiary,
 );
 router.get('/:diaryId', authMiddleware, diarycontroller.findDetailDiary);

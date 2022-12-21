@@ -9,8 +9,8 @@ class DiaryController {
   createDiary = async (req, res) => {
     try {
       const { userId } = res.locals.user;
-      const { title, content, image, weather } = req.body;
-      const fileName = req.file.filename;
+      const { title, content, weather } = req.body;
+      const fileName = req.file.location;
       await this.diaryService.createDiary(
         userId,
         title,
@@ -18,7 +18,6 @@ class DiaryController {
         content,
         weather,
       );
-      console.log('여기', fileName);
       return res.status(201).json({ message: '생성완료' });
     } catch (error) {
       logger.error(error.message);
@@ -28,10 +27,15 @@ class DiaryController {
   };
 
   findAllDiaries = async (req, res) => {
-    const { userId } = res.locals.user;
-    console.log(userId);
-    const diaries = await this.diaryService.findAllDiaries(userId);
-    return res.status(200).json({ diaries });
+    try {
+      const { userId } = res.locals.user;
+      const diaries = await this.diaryService.findAllDiaries(userId);
+      return res.status(200).json({ diaries });
+    } catch (error) {
+      logger.error(error.message);
+
+      res.status(error.status).json({ error: error.message });
+    }
   };
 
   findDetailDiary = async (req, res) => {
@@ -44,7 +48,7 @@ class DiaryController {
       });
       return res.status(200).json({ diary });
     } catch (error) {
-      logger.error(err.message);
+      logger.error(error.message);
 
       res.status(error.status).json({ error: error.message });
     }

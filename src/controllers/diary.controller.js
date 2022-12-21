@@ -11,6 +11,10 @@ class DiaryController {
       const { userId } = res.locals.user;
       const { title, content, weather } = req.body;
       const fileName = req.file.location;
+      req.file.contentType = 'image/png';
+      req.file.metadata = 'image/png';
+      req.file.contentDisposition = 'inline';
+      console.log(req.file);
       await this.diaryService.createDiary(
         userId,
         title,

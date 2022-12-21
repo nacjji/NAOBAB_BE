@@ -14,11 +14,13 @@ module.exports = multer({
   storage: multerS3({
     s3: new AWS.S3(), // config 통해 접근
     bucket: process.env.BUCKET_NAME, // 나의 버킷 이름
+    contentType: multerS3.AUTO_CONTENT_TYPE,
     key(req, file, cb) {
       // original 폴더 안에 업로드한 파일을 넣을 것이다.
       // 이름이 겹치지 않게 파일 이름에 타임스템프를 더해준다.
       // 이렇게 s3 버켓에 저장한다.
-      console.log(file.mimetype);
+      console.log(file);
+
       cb(null, `original/${Date.now()}.png`);
     },
   }),

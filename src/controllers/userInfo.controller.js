@@ -5,8 +5,9 @@ class UserInfoController {
   updateUserService = new UserInfoService();
   updateUser = async (req, res, next) => {
     try {
-      const { nickname, profileImg, selfIntro } = req.body;
+      const { nickname, selfIntro } = req.body;
       const { userId } = res.locals.user;
+      const profileImg = req.file.location;
       await this.updateUserService.updateUser(
         userId,
         nickname,

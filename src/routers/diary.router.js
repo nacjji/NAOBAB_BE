@@ -3,19 +3,7 @@ const router = express.Router();
 const authMiddleware = require('../middlewares/auth');
 const DiaryController = require('../controllers/diary.controller');
 const diarycontroller = new DiaryController();
-const multer = require('multer');
-
-const upload = multer({
-  storage: multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, 'diaryImages/');
-    },
-    filename: function (req, file, cb) {
-      cb(null, file.originalname);
-    },
-  }),
-});
-
+const upload = require('upload');
 router.post(
   '/',
   upload.single('image'),

@@ -9,8 +9,8 @@ class DiaryController {
   createDiary = async (req, res) => {
     try {
       const { userId } = res.locals.user;
-      const { title, content, image, weather } = req.body;
-      const fileName = req.file.filename;
+      const { title, content, weather } = req.body;
+      const fileName = req.file.location;
       await this.diaryService.createDiary(
         userId,
         title,
@@ -18,7 +18,6 @@ class DiaryController {
         content,
         weather,
       );
-      console.log('여기', fileName);
       return res.status(201).json({ message: '생성완료' });
     } catch (error) {
       logger.error(error.message);

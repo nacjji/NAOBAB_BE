@@ -5,7 +5,6 @@ class SignupController {
   signupUser = async (req, res, next) => {
     try {
       const { username, nickname, password, selfIntro } = req.body;
-      console.log(req.headers);
       await this.signupService.signupUser(
         username,
         nickname,

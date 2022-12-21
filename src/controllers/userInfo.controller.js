@@ -15,6 +15,7 @@ class UserInfoController {
       );
       return res.status(201).json({ message: '회원 수정 참 잘했어요!' });
     } catch (error) {
+      logger.error(error.message);
       res.status(error.status).json({ error: error.message });
     }
   };

@@ -7,6 +7,7 @@ class UserInfoController {
     try {
       const { nickname, selfIntro } = req.body;
       const { userId } = res.locals.user;
+      console.log(req);
       const profileImg = req.file.location;
       await this.updateUserService.updateUser(
         userId,
@@ -16,6 +17,7 @@ class UserInfoController {
       );
       return res.status(201).json({ message: '회원 수정 참 잘했어요!' });
     } catch (error) {
+      console.log(error);
       logger.error(error.message);
       res.status(error.status).json({ error: error.message });
     }

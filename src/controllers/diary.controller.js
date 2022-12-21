@@ -1,21 +1,25 @@
 const logger = require('../../config/loggers');
 const DiaryService = require('../../src/services/diary.service');
 const { ApiError } = require('../utils/apiError');
+const multer = require('multer');
+const upload = multer;
 
 class DiaryController {
   diaryService = new DiaryService();
   createDiary = async (req, res) => {
     try {
       const { userId } = res.locals.user;
-      const { title, image, content, weather } = req.body;
+      const { title, content, image, weather } = req.body;
+      const fileName = req.file.filename;
       await this.diaryService.createDiary(
         userId,
         title,
-        image,
+        fileName,
         content,
         weather,
       );
-      return res.status(201).json({ message: '일기장 생성' });
+      console.log('여기', fileName);
+      return res.status(201).json({ message: '생성완료' });
     } catch (error) {
       logger.error(error.message);
 

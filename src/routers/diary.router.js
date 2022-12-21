@@ -2,10 +2,26 @@ const express = require('express');
 const router = express.Router();
 const authMiddleware = require('../middlewares/auth');
 const DiaryController = require('../controllers/diary.controller');
-const { route } = require('./login.router');
 const diarycontroller = new DiaryController();
+const multer = require('multer');
 
-router.post('/', authMiddleware, diarycontroller.createDiary);
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'diaryImages/');
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.originalname);
+    },
+  }),
+});
+
+router.post(
+  '/',
+  upload.single('image'),
+  authMiddleware,
+  diarycontroller.createDiary,
+);
 router.get('/:diaryId', authMiddleware, diarycontroller.findDetailDiary);
 router.get('/', authMiddleware, diarycontroller.findAllDiaries);
 router.put('/:diaryId', authMiddleware, diarycontroller.updateDiary);

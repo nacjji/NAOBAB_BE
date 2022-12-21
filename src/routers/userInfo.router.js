@@ -3,12 +3,12 @@ const router = express.Router();
 const UpdateUserController = require('../controllers/userInfo.controller');
 const updateUserController = new UpdateUserController();
 const authMiddleware = require('../middlewares/auth');
-const upload = require('../middlewares/multerMiddlewareProfile');
+const upload = require('../middlewares/awsS3ProfileMiddleware');
 
 router.put(
   '/',
-  upload.single('image'),
   authMiddleware,
+  upload.single('image'),
   updateUserController.updateUser,
 );
 router.put('/', authMiddleware, updateUserController.updateUser);

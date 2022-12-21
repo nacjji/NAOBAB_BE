@@ -17,17 +17,23 @@ class DiaryController {
       );
       return res.status(201).json({ message: '일기장 생성' });
     } catch (error) {
-      logger.error(err.message);
+      logger.error(error.message);
 
       res.status(error.status).json({ error: error.message });
     }
   };
 
   findAllDiaries = async (req, res) => {
-    const { userId } = res.locals.user;
+    try {
+      const { userId } = res.locals.user;
     console.log(userId);
     const diaries = await this.diaryService.findAllDiaries(userId);
     return res.status(200).json({ diaries });
+    }catch (error) {
+      logger.error(error.message);
+
+      res.status(error.status).json({ error: error.message });
+    }    
   };
 
   findDetailDiary = async (req, res) => {
@@ -40,7 +46,7 @@ class DiaryController {
       });
       return res.status(200).json({ diary });
     } catch (error) {
-      logger.error(err.message);
+      logger.error(error.message);
 
       res.status(error.status).json({ error: error.message });
     }

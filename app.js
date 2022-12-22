@@ -7,12 +7,12 @@ const helmet = require('helmet');
 
 const logger = require('./config/loggers');
 const cors = require('cors');
-const whitelist = '[http://localhost:3001]';
 
 // 미들웨어 통과하는 순서를 첫 번째로
 app.use(
   cors({
-    origin: '*',
+    //TODO: FE origin 설정
+    origin: '',
     credentials: true, // default: false
   }),
 );

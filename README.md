@@ -47,23 +47,35 @@
 signup
 - username  리소스 중복 확인
 - username, nickname, password  데이터 형식 검사
+
 login
 - 로그인시 JWT Access 토큰 발행
-- 해당하는 jwt 유효성에 대한 검증과 복호화
-userinfo
+- HTTP Header로 Access 토큰 전송
+- 해당하는 JWT 유효성에 대한 검증과 복호화
+
+userInfo
 - 유저정보저장
 - 유저 프로필 수정
      - 유저 프로필 이미지 추가
      - 유저 닉네임, 소개글 수정
+
 diary
 - 일기장 생성
-     - title, image, content, weather 작성
+     - title, image, content 작성
+     - 프론트 측에서 weather API 전달
+
 - 일기장 목록 조회
      - 일기장 목록 조회 시 유효성 검사
+
 - 일기장 상세 조회
+    - 로그인 여부 확인
+    -   
+
 - 일기장 수정
-     -  title, content, image, content, weather 수정
+     -  title, content, image, content 수정
+
  - 일기장 삭제
+    - 게시글 작성자 여부 확인  
 
 
 

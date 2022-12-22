@@ -36,3 +36,6 @@
     npx sequelize model:generate --name Users --attributes username:string,nickname:string,password:string,profileImg:string,self_intro:string
 
     npx sequelize model:generate --name Diary --attributes userId:integer,title:string,image:string,content:string
+    
+## 기술 스택
+#F7DF1E

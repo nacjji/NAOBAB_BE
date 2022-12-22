@@ -1,5 +1,4 @@
 const { Users } = require('../../models');
-const { ValidationError } = require('../../exceptions/index.exception');
 class UserInfoRepository {
   updateUser = async (userId, nickname, fileName, selfIntro) => {
     if (!fileName) {

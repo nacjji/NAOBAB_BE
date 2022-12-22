@@ -1,8 +1,5 @@
 const logger = require('../../config/loggers');
 const DiaryService = require('../../src/services/diary.service');
-const { ApiError } = require('../utils/apiError');
-const multer = require('multer');
-const upload = multer;
 
 class DiaryController {
   diaryService = new DiaryService();
@@ -72,7 +69,7 @@ class DiaryController {
 
       return res.status(201).json({ message: '일기장 수정' });
     } catch (error) {
-      logger.error(err.message);
+      logger.error(error.message);
 
       res.status(error.status).json({ error: error.message });
     }
@@ -86,7 +83,7 @@ class DiaryController {
       await this.diaryService.deleteDiary(userId, diaryId);
       return res.status(201).json({ message: '일기장 삭제' });
     } catch (error) {
-      logger.error(err.message);
+      logger.error(error.message);
 
       res.status(error.status).json({ error: error.message });
     }

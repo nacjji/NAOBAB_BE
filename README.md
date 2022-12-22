@@ -38,4 +38,7 @@
     npx sequelize model:generate --name Diary --attributes userId:integer,title:string,image:string,content:string
     
 ## 기술 스택
-#F7DF1E
+<img src="https://img.shields.io/badge/javascript-##F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white">
+<img src="https://img.shields.io/badge/nodejs-#제외색상번호?style=for-the-badge&logo=아이콘이름&logoColor=white">
+<img src="https://img.shields.io/badge/express-#제외색상번호?style=for-the-badge&logo=아이콘이름&logoColor=white">
+<img src="https://img.shields.io/badge/기술이름-#제외색상번호?style=for-the-badge&logo=아이콘이름&logoColor=white">

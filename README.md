@@ -43,6 +43,7 @@
 <img src="https://camo.githubusercontent.com/64275ceb7fccb7a4328c84c984ae3f9c90c64c0c9a3d525cfe9abe2660d67c4e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4d7953514c2d3434373941313f7374796c653d666f722d7468652d6261646765266c6f676f3d4d7953514c266c6f676f436f6c6f723d7768697465" data-canonical-src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&amp;logo=MySQL&amp;logoColor=white" style="max-width: 100%;"><img src="https://camo.githubusercontent.com/6c50eb6f911b1bcb4c0b790fb5e908bf896c525685839fa802c41349dcd1c8bf/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f53657175656c697a652d3532423045373f7374796c653d666f722d7468652d6261646765266c6f676f3d53657175656c697a65266c6f676f436f6c6f723d7768697465" data-canonical-src="https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&amp;logo=Sequelize&amp;logoColor=white" style="max-width: 100%;">
 
 
+
 ## Features
 signup
 - username  리소스 중복 확인
@@ -77,6 +78,12 @@ diary
  - 일기장 삭제
     - 게시글 작성자 여부 확인  
 
+
+## ERD
+![스크린샷 2022-12-22 오전 10 30 16](https://user-images.githubusercontent.com/105340187/209035154-133ea5d9-2e2f-4dd8-bfb7-33b0b9130982.png)
+
+
+## Trouble Shooting
 
 
 

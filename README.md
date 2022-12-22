@@ -14,11 +14,9 @@
     npm i sequelize mysql2 -S
     npm i sequelize -D
     npm i sequelize-cli -D
-    npm i cookie-parser
     npm i jsonwebtoken
     npm i dotenv
     npm i --save multer
-    npm i passport passport-local passport-kakao bcrypt
     npm i prettier -D
     npm i bcryptjs
     npm i joi

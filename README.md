@@ -69,7 +69,6 @@ diary
 
 - 일기장 상세 조회
     - 로그인 여부 확인
-    -   
 
 - 일기장 수정
      -  title, content, image, content 수정
